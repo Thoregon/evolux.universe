@@ -44,7 +44,24 @@ const logger = winston.createLogger({
             ]
         });
 
+
 let Setup = (() => {
+
+    function getUniverseFile(basedir, filename) {
+        let universeFile = path.join(basedir, filename);
+        if (fs.existsSync(universeFile)) return universeFile;
+
+        if (!module.parent || !module.parent.parent) return;
+
+        let callerFileName = module.parent.parent.filename;
+        let dir = path.dirname(callerFileName);
+        while (dir.startsWith(basedir) && !fs.existsSync(universeFile)) {
+            dir = path.join(dir, '../');
+            universeFile = path.join(dir, filename);
+            if (fs.existsSync(universeFile)) return universeFile;
+        }
+    }
+
     logger.debug("$$ setup: start");
     let _env = {
         stage: 'DEV',
@@ -135,11 +152,12 @@ let Setup = (() => {
         }
     }
 
-    _env.universeFile = path.join(_env.basedir, _env.universe);
+    // _env.universeFile = path.join(_env.basedir, _env.universe);
+    _env.universeFile = getUniverseFile(_env.basedir, _env.universe);
 
     // check if config exists
     if (!fs.existsSync(_env.universeFile)) {
-        logger.log("error", "unknown config: '%s'", _env.universeFile);
+        logger.log("error", "unknown config: '%s'", _env.universe);
         process.exit(1);
     } else {
         let stats = fs.statSync(_env.universeFile);

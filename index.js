@@ -11,7 +11,8 @@ const path = require('path');
 var lib = {};
 module.exports = lib;
 
-lib.universe = require("./src/universe");
+// todo: change implementation to protouniverse
+lib.protouniverse = require("./src/universe");
 
 let libpath = path.join(__dirname, 'lib');
 
