@@ -28,7 +28,7 @@ if (dir != setup.env.basedir) {
     failure++;
     console.log("$$ Err: basedir is '" + setup.env.basedir + "' instead of '"+dir+"'");
 }
-if ('universe.js' != setup.env.universe) {
+if ('universe.mjs.js' != setup.env.universe) {
     failure++;
     console.log("$$ Err: config is '" + setup.env.universe + "' instead of 'universe.js'");
 }

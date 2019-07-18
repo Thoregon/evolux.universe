@@ -15,7 +15,7 @@
  * Usage:
  *  const setup = require("setup");
  *  const config = require("config")(setup.env);
- * @see config.js
+ * @see config.mjs.js
  *
  * Checks:
  * - Valid stage

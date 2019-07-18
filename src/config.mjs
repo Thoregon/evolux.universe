@@ -6,16 +6,19 @@
 
 /**
  * init config. Reads config from the specified config file: setup.env.configFile
- * If the config file, which is an executable JS, produces errors the process will exit.
+ * If the config file, which is an executable JS, if it produces errors the process will exit.
  *
  * Usage:
- *  const setup = require("setup");
- *  const config = require("config")(setup.env);
- * @see setup.js
+ *  import setup from 'setup.mjs';
+ *  import config from 'config.mjs';
+ *
+ *  config(setup.env);
+ *
+ * @see setup.mjs.js
  *
  * @param {} env - invoke with 'setup.env'
  */
-let config = function (env) {
+const config = function (env) {
     let logger = env.logger;
     // run the config; if it produces errors --> exit
     try {
@@ -45,4 +48,4 @@ let config = function (env) {
     }
 };
 
-module.exports = config;
+export default config;
