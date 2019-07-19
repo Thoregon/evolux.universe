@@ -4,9 +4,9 @@
   "description": "thoregon entry point to inflate the universe",
   "homepage": "https://evolux.thoregon.io",
   "repository": "github:Thoregon/evolux.universe",
-  "directories": {
-  "main": "lib/letThereBeLight.mjs",
+  "main": "index.mjs",
   "type": "module",
+  "directories": {
     "lib": "lib",
     "test": "test"
   },

@@ -15,7 +15,7 @@ var failure = 0;
 
 const assert = require("assert");
 
-const setup = require('../../src/setup');
+const setup = require('../../lib/setup');
 
 // console.log("env: ", setup.env);
 

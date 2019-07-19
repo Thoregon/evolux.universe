@@ -4,6 +4,7 @@
  * @author: blukassen
  */
 
-import letThereBeLight from './lib/letThereBeLight';
-
+export { default as boot } from './lib/browserloader.mjs';
+export { default as protouniverse } from './lib/protouniverse.mjs';
+import letThereBeLight from './lib/letThereBeLight.mjs';
 export default letThereBeLight;

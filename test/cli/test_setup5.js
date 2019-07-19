@@ -12,6 +12,6 @@ var failure = 0;
 
 const assert = require("assert");
 
-const setup = require('../../src/setup');
+const setup = require('../../lib/setup');
 
 console.log(">> Test: Setup5", (failure ? failure + " failures" : "all tests passed"));
