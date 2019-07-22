@@ -4,7 +4,10 @@
  * @author: blukassen
  */
 
-export { default as boot } from './lib/browserloader.mjs';
-export { default as protouniverse } from './lib/protouniverse.mjs';
+import p from './lib/protouniverse.mjs';
+import b  from './lib/browserloader.mjs';
+
+export const boot = b;
+export const protouniverse = p;
 import letThereBeLight from './lib/letThereBeLight.mjs';
 export default letThereBeLight;

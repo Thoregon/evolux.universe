@@ -5,6 +5,7 @@
  */
 
 import universe from './lib/universe.mjs';
+import path from 'path';
 
 /**
  * init config. Reads config from the specified config file: setup.env.configFile
@@ -25,29 +26,18 @@ export default async function (env) {
         universe.logger = logger;
         // set origin; yes, hard overwrite other settings
         universe.stage = env.stage;
+        // import the config files
         let cfgfiles = universe.universeFiles = env.universeFiles;
-
-        let exports = await importCfgs(cfgfiles);
+        let exports = {};
+        for (let cfgfile of cfgfiles) {
+            exports[path.basename(cfgfile)] = await import(cfgfile);
+        }
 
         logger.debug("$$ config: end");
+
+        return exports;
     } catch (e) {
         logger.error("$$ config: error -> %s", e);
         process.exit(1);
     }
-};
-
-const importCfgs = (cfgfiles) => {
-    return new Promise((resolve, reject) => {
-        let proc = [];
-        for (let cfgfile of cfgfiles) {
-            proc.push(import(cfgfile));
-        }
-        Promise.all(proc)
-            .then(() => {
-                setTimeout(() => {
-                    resolve();
-                }, 10);
-            })
-            .catch(reject);
-    });
 };
