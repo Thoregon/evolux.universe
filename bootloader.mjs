@@ -1,19 +1,21 @@
 /**
+ * Use the loader to start 'node'.
  *
+ * Located here to for easier reference, should be located at ./lib/souvereign/
  *
  * @author: blukassen
  */
 
-import fs from 'fs';
-import path from 'path';
-import process from 'process';
-import Module from 'module';
-// import universetemplate from './preloader.mjs';
+import fs               from 'fs';
+import path             from 'path';
+import process          from 'process';
+import Module           from 'module';
 
-const builtins = Module.builtinModules;
-const JS_EXTENSIONS = new Set(['.js', '.mjs']);
+const builtins          = Module.builtinModules;
+const JS_EXTENSIONS     = new Set(['.js', '.mjs']);
+const THOREGON_PREFIXES = ['/tr/', '/T/', 't͛', '/T͛/'];
 
-const baseURL = new URL(`${process.cwd()}/`, 'file://');
+const baseURL           = new URL(`${process.cwd()}/`, 'file://');
 
 // to ensure the same codebase, references like '/evolux.universe' must be correctly resolved
 
@@ -25,21 +27,11 @@ export async function resolve(specifier, parentModuleURL = baseURL, defaultResol
             format: 'builtin'
         };
     }
-/*
-
-    if (specifier === './testmodule.mjs') {
-        console.log(`$$ resolve dynamic ${specifier}`);
-        return {
-            url: new URL(specifier, parentModuleURL).href,
-            format: 'dynamic'
-        };
-    }
-*/
 
     if (/^\.{0,2}[/]/.test(specifier) !== true && !specifier.startsWith('file:')) {
         // For node_modules support:
         return defaultResolve(specifier, parentModuleURL);
-/*  this is the specified WHATWG behavior
+/*
         throw new Error(
             `imports must begin with '/', './', or '../'; '${specifier}' does not`);
 */
@@ -53,6 +45,11 @@ export async function resolve(specifier, parentModuleURL = baseURL, defaultResol
             url: 'file:///Entw/Projects/ThoregonUniverse/evolux.modules/evolux.universe/index.mjs',
             format: 'module'
         };
+    }
+
+
+    if (THOREGON_PREFIXES.map(i => resolved.pathname.startsWith(i)).includes(true)) {
+        return defaultResolve(basename, parentModuleURL);
     }
 
     if (!JS_EXTENSIONS.has(ext)) {
@@ -80,3 +77,22 @@ export async function dynamicInstantiate(url) {
         execute: (exports) =>  Object.assign(exports, mexports)
     };
 }
+
+function resolveEvoluxUniverse(url) {
+
+}
+
+function resolveThoregonModules(url) {
+
+}
+
+/*
+
+    if (specifier === './testmodule.mjs') {
+        console.log(`$$ resolve dynamic ${specifier}`);
+        return {
+            url: new URL(specifier, parentModuleURL).href,
+            format: 'dynamic'
+        };
+    }
+*/
