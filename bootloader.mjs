@@ -20,7 +20,13 @@ const baseURL           = new URL(`${process.cwd()}/`, 'file://');
 // to ensure the same codebase, references like '/evolux.universe' must be correctly resolved
 
 export async function resolve(specifier, parentModuleURL = baseURL, defaultResolve) {
-    console.log(`$$ loader.resolve('${specifier}')`);
+
+    // todo: resolve a root refernce '/' to builtin's and node_modules
+
+    console.log(`loader : $$ resolve('${specifier}')`);
+
+    // if (specifier.startsWith('/')) specifier.substr(1);
+
     if (builtins.includes(specifier)) {
         return {
             url: specifier,
@@ -40,6 +46,7 @@ export async function resolve(specifier, parentModuleURL = baseURL, defaultResol
     const basename = path.basename(resolved.pathname);
     const ext = path.extname(resolved.pathname);
 
+    // todo: replace with 'node_modules' lookup
     if (basename === 'evolux.universe') {
         return {
             url: 'file:///Entw/Projects/ThoregonUniverse/evolux.modules/evolux.universe/index.mjs',
@@ -47,8 +54,7 @@ export async function resolve(specifier, parentModuleURL = baseURL, defaultResol
         };
     }
 
-
-    if (THOREGON_PREFIXES.map(i => resolved.pathname.startsWith(i)).includes(true)) {
+    if (specifier.startsWith('/') && isNodeModule(basename)) {
         return defaultResolve(basename, parentModuleURL);
     }
 
@@ -63,7 +69,7 @@ export async function resolve(specifier, parentModuleURL = baseURL, defaultResol
 }
 
 export async function dynamicInstantiate(url) {
-    console.log(`$$ loader.dynamicInstantiate('${url}')`);
+    console.log(`loader : $$ dynamicInstantiate('${url}')`);
     let module = await import(url);
     console.log(`$$ imported ('${url}')`);
     let properties = [];
@@ -78,21 +84,6 @@ export async function dynamicInstantiate(url) {
     };
 }
 
-function resolveEvoluxUniverse(url) {
-
+function isNodeModule(basename) {
+    return fs.existsSync(path.join(process.cwd(), 'node_modules/', basename));
 }
-
-function resolveThoregonModules(url) {
-
-}
-
-/*
-
-    if (specifier === './testmodule.mjs') {
-        console.log(`$$ resolve dynamic ${specifier}`);
-        return {
-            url: new URL(specifier, parentModuleURL).href,
-            format: 'dynamic'
-        };
-    }
-*/
