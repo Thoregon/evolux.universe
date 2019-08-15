@@ -12,12 +12,15 @@ import process          from 'process';
 import Module           from 'module';
 
 // *** make 'window' global available. support 'browser' and 'node' modules to use 'global' or 'window' arbitrarily
+// *** yes, this is not true, but since javascript modules automatically runs in strict mode, there is no way to test for 'global' or 'window' without an error
 global.window = global;
 // *** some test methods
-global.isBrowser    = () => false;
-global.isReliant    = () => false;
-global.isNode       = () => true;
-global.isSovereign  = () => true;
+Object.defineProperties(global, {
+    'isBrowser' :   { value: false, configurable: false, enumerable: true, writable: false},
+    'isReliant' :   { value: false, configurable: false, enumerable: true, writable: false},
+    'isNode' :      { value: true,  configurable: false, enumerable: true, writable: false},
+    'isSovereign' : { value: true,  configurable: false, enumerable: true, writable: false},
+});
 
 // some constants to check what to resolve
 const builtins          = Module.builtinModules;

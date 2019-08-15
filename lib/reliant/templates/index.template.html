@@ -43,7 +43,18 @@
 <script nomodule src="https://unpkg.com/browser-es-module-loader"></script>
 
 <!-- load boot script -->
-<script type="module" src="/boot"></script>
+<script type="module">
+    let clientsettings = {
+        webcomponents:  !!window.customElements,
+    };
+    (async () => {
+        try {
+            await import("/boot?client=" + encodeURI(JSON.stringify(clientsettings)));
+        } catch (err) {
+            console.log(err);
+        }
+    })();
+</script>
 
 </body>
 </html>

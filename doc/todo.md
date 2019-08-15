@@ -6,24 +6,17 @@ ToDo
 - integrate yarn for package management
 
 - browserloader
-    * ensure cache directory
-    * params
-        * use params from ./index.mjs?... request
+    * introduce ETag to identify client
+        * memorize client settings to deliver a matching module layer stack
+    * boot params
         * apply basic setings like 'stage' to the browserloader env
     * express
         * enable CORS (Cross-Origin Resource Sharing), server whitelisting
         * add WS (Websockets)
     * enable CSP (Content-Security-Policy) on client side
+    * support bower_modules
     * analyse 'npm' packages
-        * support bower_modules
         * which packager used (rollup, webpack), anlyse packager config, find or build the browser package
-        * maintain cache 
-        * check 'bower.json'
-        * wrap “browser” scripts in package.json with a ‘fake’ AMD function
-        * analyse “main” and “type” (module), if no type best guess for the file extension (.js | .mjs)
-        * analyse the “browser” field, apply file name replacements	
-            https://github.com/defunctzombie/package-browser-field-spec
-            https://github.com/dtao/lazy.js/blob/master/lazy.js
         * which packager used (rollup, webpack), anlyse packager config, find or build the browser package
         * analyse rollup.js which packages are available 
         * transpile modules using require() with babel and rollup 
@@ -43,6 +36,9 @@ Done
     * use the leading '/' to find builtin modules
 
 - browserloader: analyse 'npm' packages
+    * ensure cache directory
+    * params
+        * use params from ./boot?... request
     * package.json: if exists "jsnext:main" use it
     * featuredetect webcomponents add load polyfill only when needed
         * add polyfill for webcomponents
@@ -51,6 +47,14 @@ Done
         * include cors
     * indexrequest -> send container html with script imports
     * supply a generated 'boot-mjs', reference to 'index' by query param, apply other query params to the universe like 'setup.mjs' does.
+    * analyse 'npm' packages
+            * maintain cache 
+            * check 'bower.json'
+            * wrap “browser” scripts in package.json with a ‘fake’ AMD function
+            * analyse “main” and “type” (module), if no type best guess for the file extension (.js | .mjs)
+            * analyse the “browser” field, apply file name replacements	
+                https://github.com/defunctzombie/package-browser-field-spec
+                https://github.com/dtao/lazy.js/blob/master/lazy.js
     * modulewrapper for ES6 modules
     
         function isFunction(obj) {
