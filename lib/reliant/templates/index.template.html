@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.google-analytics.com; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; media-src *; img-src * data:"-->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <title>Playground</title>
+    <style>
+        .outdated       { visibility: hidden; }
+        .browserlinks   { padding: 30px 100px; }
+        .browser        { display: inline-block; width: 25em; }
+    </style>
+</head>
+<body>
+
+<p>Playground</p>
+
+<div class="outdated">
+    <p>The browser you are using is outdated</p>
+    <p>Please update to one of the modern browsers for security and best browsing experience</p>
+    <div class="browserlinks">
+        <div class="browser">
+            <a href="#">EDGE</a>
+        </div>
+        <div class="browser">
+            <a href="#">Firefox</a>
+        </div>
+        <div class="browser">
+            <a href="#">Chrome</a>
+        </div>
+        <div class="browser">
+            <a href="#">Brave</a>
+        </div>
+    </div>
+</div>
+
+<!-- load webcomponents bundle, which includes all the necessary polyfills -->
+<!-- script src="/evolux.universe/@webcomponents"></script -->
+
+<!-- load es module support bundle, which includes all the necessary polyfills -->
+<script nomodule src="https://unpkg.com/browser-es-module-loader/dist/babel-browser-build.js"></script>
+<script nomodule src="https://unpkg.com/browser-es-module-loader"></script>
+
+<!-- load boot script -->
+<script type="module" src="/boot"></script>
+
+</body>
+</html>

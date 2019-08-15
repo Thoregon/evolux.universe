@@ -21,12 +21,13 @@
   "author": "Bernhard Lukassen",
   "license": "MIT",
   "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.2.10",
+    "cors": "^2.8.5",
     "evolux.supervise": "git+ssh://git@github.com/Thoregon/evolux.supervise.git",
-    "highland": "^2.13.0",
+    "express": "^4.17.1",
     "lazy.js": "^0.5.1",
     "rollup": "^1.19.4",
-    "unload": "^1.3.6",
-    "winston": "^3.0.0",
+    "stacktrace-js": "^2.0.0",
     "yargs": "^11.0.0"
   },
   "devDependencies": {
