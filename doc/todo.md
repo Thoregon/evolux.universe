@@ -3,11 +3,19 @@ ToDo
 
 - migrate to 'thoregon.universe'!
 
-- integrate yarn for package management
+- integrate yarn/babel/rollup for package management
 
+- ? do we need a "shadow" of the reliant client on the service side ?
+
+- bootloader & browserloader
+    * check default params on universe
+    * --> yarn: use a common local cache for npm/bower modules
+    * add middelware hooks to allow other software layers to plugin
+    
 - browserloader
     * introduce ETag to identify client
         * memorize client settings to deliver a matching module layer stack
+    * introduce browser cache manifest
     * boot params
         * apply basic setings like 'stage' to the browserloader env
     * express
