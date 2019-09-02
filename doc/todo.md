@@ -1,7 +1,7 @@
 ToDo
 ====
 
-- introduce a nameservice
+- introduce a nameservice --> evolux.stellarmap
 
 - migrate to 'thoregon.universe'?
 
@@ -20,18 +20,18 @@ ToDo
     - introduce browser Application Cache (AppCache) manifest, also installable PWA's 
         - handle 'beforeinstallprompt' event to tell the user it is installable
         --> https://developer.mozilla.org/de/docs/Web/HTML/Using_the_application_cache
-    * boot params
-        * apply basic setings like 'stage' to the browserloader env
-    * express
-        * enable CORS (Cross-Origin Resource Sharing), server whitelisting
-        * add WS (Websockets)
-    * enable CSP (Content-Security-Policy) on client side
-    * support bower_modules
-    * analyse 'npm' packages
-        * which packager used (rollup, webpack), anlyse packager config, find or build the browser package
-        * which packager used (rollup, webpack), anlyse packager config, find or build the browser package
-        * analyse rollup.js which packages are available 
-        * transpile modules using require() with babel and rollup 
+    - boot params
+        - apply basic setings like 'stage' to the browserloader env
+    - express
+        - enable CORS (Cross-Origin Resource Sharing), server whitelisting
+        - add WS (Websockets)
+    - enable CSP (Content-Security-Policy) on client side
+    - support bower_modules
+    - analyse 'npm' packages
+        - which packager used (rollup, webpack), anlyse packager config, find or build the browser package
+        - which packager used (rollup, webpack), anlyse packager config, find or build the browser package
+        - analyse rollup.js which packages are available 
+        - transpile modules using require() with babel and rollup 
 
 - watch changes of config's, reload
     --> own module, installable, for reliant and sovereign nodes
