@@ -15,13 +15,20 @@ const bootloader        = new Bootloader();
 // *** make 'window' global available. support 'browser' and 'node' modules to use 'global' or 'window' arbitrarily
 // *** yes, this is not true, but since javascript modules automatically runs in strict mode, there is no way to test for 'global' or 'window' without an error
 global.window = global;
+const thoregon = {};
 // *** some test methods
-Object.defineProperties(global, {
+Object.defineProperties(thoregon, {
     'isBrowser' :   { value: false, configurable: false, enumerable: true, writable: false},
     'isReliant' :   { value: false, configurable: false, enumerable: true, writable: false},
     'isNode' :      { value: true,  configurable: false, enumerable: true, writable: false},
     'isSovereign':  { value: true,  configurable: false, enumerable: true, writable: false},
     'bootloader':   { value: bootloader,  configurable: false, enumerable: true, writable: false},
+    'nature' :      { value: 'sovereign', configurable: false, enumerable: true, writable: false },
+    'density' :     { value: 'headless',  configurable: false, enumerable: true, writable: false }, // todo: add 'headed' for Electron and mobile apps
+});
+
+Object.defineProperties(global, {
+    'thoregon':     { value: thoregon, configurable: false, enumerable: true, writable: false },
 });
 
 export async function resolve(specifier, parentModuleURL = baseURL, defaultResolve) {

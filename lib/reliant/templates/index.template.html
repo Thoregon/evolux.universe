@@ -32,6 +32,9 @@
         <div class="browser">
             <a href="#">Brave</a>
         </div>
+        <div class="browser">
+            <a href="#">Opera</a>
+        </div>
     </div>
 </div>
 
@@ -44,11 +47,16 @@
 
 <!-- load boot script -->
 <script type="module">
-    let clientsettings = {
-        webcomponents:  !!window.customElements,
-    };
     (async () => {
         try {
+            let density = (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1'  || document.location.hostname === '::1') ? 'lite' : 'rich';
+            let clientsettings = {
+                webcomponents:  !!window.customElements,
+                nature:         'reliant',
+                density:        density
+            };
+
+            // boot the thoregon browser node
             await import("/boot?client=" + encodeURI(JSON.stringify(clientsettings)));
         } catch (err) {
             console.log(err);
