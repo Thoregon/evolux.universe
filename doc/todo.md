@@ -6,13 +6,14 @@ ToDo
 - Universe: catch 'unhandled exceptions' and do propper logging 
 - migrate to 'thoregon.universe'?
 
-- integrate yarn/babel/rollup for package management
+- integrate [pnpm](https://github.com/pnpm/pnpm)/babel/rollup for package management
 
 - ? do we need a "shadow" of the reliant client on the service side ?
 
 - bootloader & browserloader
     - check default params on universe
-    - --> yarn: use a common local cache for npm/bower modules
+    - --> yarn: use a common local cache for npm/bower modules; try to utilise pnpm
+    - do a correct version resolution for (sub)packages; currently it uses the first found
     - add middelware hooks to allow other software layers to plugin
     - use: mainFields: ['module', 'main'], instead of module: true, jsnext: true, main: true, browser: true,
         the fields to scan in a package.json to determine the entry point
