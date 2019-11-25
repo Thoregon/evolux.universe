@@ -8,7 +8,7 @@ ToDo
     - --> browser: https://github.com/dfkaye/vm-shim, https://github.com/commenthol/safer-eval#readme
     - no access to global variables except 'universe'
 
-- Universe: catch 'unhandled exceptions' and do propper logging 
+- Universe: catch 'unhandled exceptions' and do proper logging 
 - migrate to 'thoregon.universe'?
 
 - integrate [pnpm](https://github.com/pnpm/pnpm)/babel/rollup for package management
