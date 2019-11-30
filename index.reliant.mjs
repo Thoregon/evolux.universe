@@ -4,10 +4,11 @@
  * @author: blukassen
  */
 
-export { default as protouniverse }     from '/evolux.universe/lib/reliant/protouniverse.mjs';
-export { bootlogger }                   from '/evolux.universe/lib/bootutil.mjs';
-export { default as unload }            from '/evolux.universe/lib/reliant/unload.mjs'
-export *                                from './lib/thoregonhelper.mjs';
+export *                                from './common.mjs';
 
-import letThereBeLight                  from '/evolux.universe/lib/reliant/letThereBeLight.mjs';
+export *                                from './lib/reliant/busy.mjs';
+export { default as protouniverse }     from './lib/reliant/protouniverse.mjs';
+export { default as unload }            from './lib/reliant/unload.mjs'
+
+import letThereBeLight                  from './lib/reliant/letThereBeLight.mjs';
 export default letThereBeLight;

@@ -48,3 +48,8 @@ I am working.
 
 However, there are no real logins. The UI the user is working with, act on behalf a of a verified identity, and is stateless 
 in relation to the bounded context (Service/API) and the app.
+
+##Comprehensive status query
+A universe needs an extensive observation facility. There is an API for querying also for listening on status and status changes.
+Works using pub/sub, doesn't replay events, starts with the current status. History can be queried.
+

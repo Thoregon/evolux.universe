@@ -19,7 +19,7 @@ ToDo
     - check default params on universe
     - --> yarn: use a common local cache for npm/bower modules; try to utilise pnpm
     - do a correct version resolution for (sub)packages; currently it uses the first found
-    - add middelware hooks to allow other software layers to plugin
+    - add middleware hooks to allow other software layers to plugin
     - use: mainFields: ['module', 'main'], instead of module: true, jsnext: true, main: true, browser: true,
         the fields to scan in a package.json to determine the entry point
         if this list contains "browser", overrides specified in "pkg.browser"
@@ -28,6 +28,12 @@ ToDo
     - --> get inspiration from https://www.npmjs.com/package/rollup-plugin-node-resolve
                
 - browserloader
+    - introduce ServiceWOrker on client side
+        - service worker    https://serviceworke.rs/
+            - virtual server, local downloads, dependency injection, (immediate claim) --> dynlayers
+        - cache APU         https://developers.google.com/web/fundamentals/instant-and-offline/web-storage/cache-api
+        - background sync   https://developers.google.com/web/updates/2015/12/background-sync
+        - push messages     https://developers.google.com/web/fundamentals/codelabs/push-notifications/, https://github.com/web-push-libs/web-push
     - introduce ETag to identify client
         - memorize client settings to deliver a matching module layer stack
     - introduce browser Application Cache (AppCache) manifest, also installable PWA's 
@@ -45,10 +51,6 @@ ToDo
         - which packager used (rollup, webpack), anlyse packager config, find or build the browser package
         - analyse rollup.js which packages are available 
         - transpile modules using require() with babel and rollup 
-    - service worker    https://serviceworke.rs/
-    - cache APU         https://developers.google.com/web/fundamentals/instant-and-offline/web-storage/cache-api
-    - background sync   https://developers.google.com/web/updates/2015/12/background-sync
-    - push messages     https://developers.google.com/web/fundamentals/codelabs/push-notifications/, https://github.com/web-push-libs/web-push
 
     - own browser extension
     - use webserver (builtin/plugin)
