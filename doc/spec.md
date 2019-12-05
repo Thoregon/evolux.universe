@@ -53,3 +53,21 @@ in relation to the bounded context (Service/API) and the app.
 A universe needs an extensive observation facility. There is an API for querying also for listening on status and status changes.
 Works using pub/sub, doesn't replay events, starts with the current status. History can be queried.
 
+##Usage
+
+The universe is a naming and directory service, which is used to register arbitrary entries which can be accessed by its path.
+It offers direct access by a path to the entry. 
+NOTE: If any object in the path is missing, the call will fail. Use this only when it exists guarantied.  
+```js
+    const entry = universe.path.to.item;
+```
+It offers an async interface which works like a dynamic import. This is the preferred way.
+There is also a query syntax to select the entries.
+```js
+    const entry = await universe.with('path.to.item');
+
+    // advanced, not available now maybe use JSON-Path https://www.npmjs.com/package/jsonpath
+    const entry = await universe.with('path.to.item["xyz"]');
+    const entry = await universe.with('path.to.item[?(name="xyz")]');
+```
+The function returns when the path resolves. 

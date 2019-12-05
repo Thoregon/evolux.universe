@@ -4,38 +4,45 @@
     <meta charset="UTF-8">
     <!-- meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.google-analytics.com; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; media-src *; img-src * data:"-->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <title>Playground</title>
+    <title>Thoregon</title>
     <style>
-        .outdated       { visibility: hidden; }
-        .browserlinks   { padding: 30px 100px; }
-        .browser        { display: inline-block; width: 25em; }
+        html, body {
+            background-color:   rgb(250, 250, 250);
+            font:               400 16px/1.2 "Helvetica Neue",Helvetica,Arial,sans-serif;
+            border:             0;
+            margin:             0;
+            padding:            0;
+            width:              100%;
+            height:             100%;
+            display:            block;
+            overflow:           auto;
+        }
+        body>div {
+            padding-left:        1em;
+            width:              100%;
+            height:             100%;
+            display:            block;
+            overflow:           auto;
+        }
     </style>
 </head>
 <body>
 
-<p>Playground</p>
-
-<div class="outdated">
-    <p>The browser you are using is outdated</p>
-    <p>Please update to one of the modern browsers for security and best browsing experience</p>
-    <div class="browserlinks">
-        <div class="browser">
-            <a href="#">EDGE</a>
-        </div>
-        <div class="browser">
-            <a href="#">Firefox</a>
-        </div>
-        <div class="browser">
-            <a href="#">Chrome</a>
-        </div>
-        <div class="browser">
-            <a href="#">Brave</a>
-        </div>
-        <div class="browser">
-            <a href="#">Opera</a>
-        </div>
-    </div>
+<div id="t-app">
+    <p>Thore͛gon</p>
 </div>
+
+<!-- check for obolete browser version -->
+<script>
+    var $buoop = {required:{e:-4,f:-3,o:-3,s:-1,c:-3},insecure:true,api:2019.10 };
+    function $buo_f(){
+        var e = document.createElement("script");
+        e.src = "//browser-update.org/update.min.js";
+        document.body.appendChild(e);
+    };
+    try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+    catch(e){window.attachEvent("onload", $buo_f)}
+</script>
 
 <!-- load webcomponents bundle, which includes all the necessary polyfills -->
 <!-- script src="/evolux.universe/@webcomponents"></script -->

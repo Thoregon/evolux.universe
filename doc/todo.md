@@ -1,6 +1,11 @@
 ToDo
 ====
 
+- temnplates
+    - custom title, ...
+    - custom style sheets
+    - enable custom 'index-html' (replace default template)
+
 - introduce a nameservice --> evolux.stellarmap
 
 - enclose booted scrpt with its private processing context
