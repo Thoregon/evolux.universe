@@ -1,4 +1,5 @@
-##Universe
+Universe
+--------
 
 Write once run everywhere. The universe enables writing software which run on 'node' as well as in any browser as is. 
 
@@ -16,7 +17,7 @@ Allows to add event listeners to listen to changes of settings.
 
 Listens itself to changes of the config
 
-##Kindes of Peers/Nodes  
+## Kindes of Peers/Nodes  
 - full peers     --> sovereign node : can act standalone and connect to other peers
 - browser peers  --> reliant node   : needs a service to load the app and maybe some communication facilities which 
 are supplied by the service. Different initial setup/config and loaders are used to boot the app/system. 
@@ -49,11 +50,11 @@ I am working.
 However, there are no real logins. The UI the user is working with, act on behalf a of a verified identity, and is stateless 
 in relation to the bounded context (Service/API) and the app.
 
-##Comprehensive status query
+## Comprehensive status query
 A universe needs an extensive observation facility. There is an API for querying also for listening on status and status changes.
 Works using pub/sub, doesn't replay events, starts with the current status. History can be queried.
 
-##Usage
+## Usage
 
 The universe is a naming and directory service, which is used to register arbitrary entries which can be accessed by its path.
 It offers direct access by a path to the entry. 
@@ -71,3 +72,7 @@ There is also a query syntax to select the entries.
     const entry = await universe.with('path.to.item[?(name="xyz")]');
 ```
 The function returns when the path resolves. 
+
+## Migration
+central entrypoint and control for migrations (update/upgrade).
+manages the recovery points for rollbacks.

@@ -64,6 +64,9 @@ ToDo
 - watch changes of config's, reload
     --> own module, installable, for reliant and sovereign nodes
 
+- just setup the base system to be able to process transations
+    - setup components, layers, schemas ... with events from the event store
+
 Done
 ====
 
@@ -76,6 +79,8 @@ Done
     * use the leading '/' to find builtin modules
 
 - browserloader: analyse 'npm' packages
+    - 'main' component
+        - include 'index.html' as <iframe> in boot html
     * ensure cache directory
     * params
         * use params from ./boot?... request
