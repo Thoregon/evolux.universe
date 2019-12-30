@@ -1,11 +1,11 @@
 ToDo
 ====
 
-- temnplates
+- templates
     - custom title, ...
     - custom style sheets
     - enable custom 'index-html' (replace default template)
-
+     
 - introduce a nameservice --> evolux.stellarmap
 
 - enclose booted scrpt with its private processing context
@@ -21,6 +21,8 @@ ToDo
 - ? do we need a "shadow" of the reliant client on the service side ?
 
 - bootloader & browserloader
+    - import { matter } from '/universe/evolux'; 
+         --> dynamicInstantiate
     - check default params on universe
     - --> yarn: use a common local cache for npm/bower modules; try to utilise pnpm
     - do a correct version resolution for (sub)packages; currently it uses the first found
@@ -33,7 +35,7 @@ ToDo
     - --> get inspiration from https://www.npmjs.com/package/rollup-plugin-node-resolve
                
 - browserloader
-    - introduce ServiceWOrker on client side
+    - introduce ServiceWorker on client side
         - service worker    https://serviceworke.rs/
             - virtual server, local downloads, dependency injection, (immediate claim) --> dynlayers
         - cache APU         https://developers.google.com/web/fundamentals/instant-and-offline/web-storage/cache-api
