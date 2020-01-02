@@ -14,7 +14,7 @@ const bootloader        = new Bootloader();
 
 // *** make 'window' global available. support 'browser' and 'node' modules to use 'global' or 'window' arbitrarily
 // *** yes, this is not true, but since javascript modules automatically runs in strict mode, there is no way to test for 'global' or 'window' without an error
-global.window = global;
+// global.window = global;
 const thoregon = {};
 // *** some test methods
 Object.defineProperties(thoregon, {
