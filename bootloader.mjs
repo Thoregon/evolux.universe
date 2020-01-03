@@ -25,9 +25,16 @@ Object.defineProperties(thoregon, {
     'isThoregonModule': { value: (specifier) => bootloader.isThoregonModule(specifier), configurable: false, enumerable: true, writable: false}
 });
 
-Object.defineProperties(global, {
+/*
+ * define some globals
+ */
+const properties = {
     'thoregon':     { value: thoregon, configurable: false, enumerable: true, writable: false },
-});
+};
+
+if (!global.globalThis) properties.globalThis = { value: global, configurable: false, enumerable: true, writable: false };
+
+Object.defineProperties(global, properties);
 
 export async function resolve(specifier, parentModuleURL = baseURL, defaultResolve) {
     return bootloader.resolve(specifier, parentModuleURL, defaultResolve);
