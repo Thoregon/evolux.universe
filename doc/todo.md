@@ -68,6 +68,10 @@ ToDo
 
 - just setup the base system to be able to process transations
     - setup components, layers, schemas ... with events from the event store
+    
+- introduce policies (permissions) for the global registry (universe)
+    - component is the 'master' for a directory, others can only read
+    - grant other components to update
 
 Done
 ====
