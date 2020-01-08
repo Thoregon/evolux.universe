@@ -6,6 +6,8 @@ ToDo
     - custom style sheets
     - enable custom 'index-html' (replace default template)
      
+- introduce a service registry for the protouniverse to handle service instances before the serivce can be 'officially' installed.
+
 - introduce a nameservice --> evolux.stellarmap
 
 - enclose booted scrpt with its private processing context
@@ -16,7 +18,7 @@ ToDo
 - Universe: catch 'unhandled exceptions' and do proper logging 
 - migrate to 'thoregon.universe'?
 
-- integrate [pnpm](https://github.com/pnpm/pnpm)/babel/rollup for package management
+- integrate [pnpm](https://github.com/pnpm/pnpm) / babel / rollup for package management
 
 - ? do we need a "shadow" of the reliant client on the service side ?
 
