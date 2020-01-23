@@ -28,11 +28,10 @@ Object.defineProperties(thoregon, {
 /*
  * define some globals
  */
-const properties = {
-    'thoregon':     { value: thoregon, configurable: false, enumerable: true, writable: false },
-};
+const properties = {};
 
-if (!global.globalThis) properties.globalThis = { value: global, configurable: false, enumerable: true, writable: false };
+if (!global.thoregon)   properties.thoregon =   { value: thoregon,  configurable: false, enumerable: true, writable: false };
+if (!global.globalThis) properties.globalThis = { value: global,    configurable: false, enumerable: true, writable: false };
 
 Object.defineProperties(global, properties);
 
