@@ -1,6 +1,9 @@
 ToDo
 ====
 
+- propagate universe property changes
+    - check if DeferredProperties do the job
+
 - templates
     - custom title, ...
     - custom style sheets
