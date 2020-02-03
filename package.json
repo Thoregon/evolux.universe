@@ -23,8 +23,8 @@
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.2.10",
     "cors": "^2.8.5",
+    "cuid": "^2.1.8",
     "express": "^4.17.1",
-    "lazy.js": "^0.5.1",
     "rollup": "^1.19.4",
     "stacktrace-js": "^2.0.0",
     "yargs": "^11.0.0"
