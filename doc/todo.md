@@ -7,7 +7,9 @@ ToDo
 - templates
     - custom title, ...
     - custom style sheets
-    - enable custom 'index-html' (replace default template)
+    - HTML Component to embed the UI's from apps (iframe internally) 
+        - iframloader more generic
+        - integrate with 'evolux.ui' 
      
 - introduce a service registry for the protouniverse to handle service instances before the serivce can be 'officially' installed.
 
