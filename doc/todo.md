@@ -1,6 +1,10 @@
 ToDo
 ====
 
+- @components
+    - introduce plugins: Universe, Bootloader, Browserloader
+    - move work to evolux.dycomponents
+    
 - propagate universe property changes
     - check if DeferredProperties do the job
 
