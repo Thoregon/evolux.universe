@@ -1,9 +1,10 @@
 ToDo
 ====
 
+- introduce plugin/middleware for: Universe, Bootloader, Browserloader
+
 - @components
-    - introduce plugins: Universe, Bootloader, Browserloader
-    - move work to evolux.dycomponents
+    - move work to evolux.dycomponents plugins
     
 - propagate universe property changes
     - check if DeferredProperties do the job
@@ -31,7 +32,9 @@ ToDo
 
 - ? do we need a "shadow" of the reliant client on the service side ?
 
-- bootloader & browserloader
+- introduce a IPFS loader / Swarm & other distibuted storage systems
+
+- bootloader & browserloader & ipfsloader
     - import { matter } from '/universe/evolux'; 
          --> dynamicInstantiate
     - check default params on universe
