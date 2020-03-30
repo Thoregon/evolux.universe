@@ -26,13 +26,9 @@
     "cuid": "^2.1.8",
     "express": "^4.17.1",
     "node-localstorage": "^2.1.5",
-    "rollup": "^1.19.4",
     "stacktrace-js": "^2.0.0",
     "yargs": "^11.0.0"
   },
   "devDependencies": {
-    "esdoc": "^1.1.0",
-    "esdoc-node": "^1.0.4",
-    "esdoc-standard-plugin": "^1.0.0"
   }
 }
