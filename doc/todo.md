@@ -19,11 +19,11 @@ ToDo
         - iframloader more generic
         - integrate with 'evolux.ui' 
      
-- introduce a service registry for the protouniverse to handle service instances before the serivce can be 'officially' installed.
+- introduce a service registry for the universe to handle service instances before the serivce can be 'officially' installed.
 
 - introduce a nameservice --> evolux.stellarmap
 
-- enclose booted scrpt with its private processing context
+- enclose booted scirpt with its private processing context
     - --> nodeJS: require('vm2'); https://www.heise.de/developer/artikel/JavaScript-Code-dynamisch-zur-Laufzeit-laden-und-ausfuehren-4536862.html?seite=3
     - --> browser: https://github.com/dfkaye/vm-shim, https://github.com/commenthol/safer-eval#readme
     - no access to global variables except 'universe'
@@ -36,6 +36,8 @@ ToDo
 - ? do we need a "shadow" of the reliant client on the service side ?
 
 - introduce a IPFS loader / Swarm & other distibuted storage systems
+    - browserloader forwarder plugin - since browsers doesn't support IPFS and other distributed file systems
+        - forwards URL request to IPFS and returns the answer
 
 - bootloader & browserloader & ipfsloader
     - import { matter } from '/universe/evolux'; 
