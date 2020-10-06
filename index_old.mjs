@@ -12,7 +12,7 @@ var lib = {};
 module.exports = lib;
 
 // todo: change implementation to protouniverse
-lib.protouniverse = require("./lib/universe");
+lib.universe = require("./lib/universe");
 
 let libpath = path.join(__dirname, 'lib');
 

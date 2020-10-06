@@ -1,8 +1,5 @@
 ToDo
 ====
-
-- !!! the universe must exist immeditely, also in the inflation phase
-    - get rid of the protouniverse
     
 - introduce plugin/middleware for: Universe, Bootloader, Browserloader
 
