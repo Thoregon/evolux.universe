@@ -15,6 +15,7 @@ const bootloader        = new Bootloader();
 const thoregon = {};
 // *** some test methods
 Object.defineProperties(thoregon, {
+    'ui':               { value: false, configurable: false, enumerable: true, writable: false},
     'isBrowser':        { value: false, configurable: false, enumerable: true, writable: false},
     'isReliant':        { value: false, configurable: false, enumerable: true, writable: false},
     'isNode':           { value: true,  configurable: false, enumerable: true, writable: false},
