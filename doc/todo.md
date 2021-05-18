@@ -1,7 +1,18 @@
 ToDo
 ====
+
+! rename to thoregon.universe
+
+- allow defining globals for some components
+    - signed package
+    - API
+    - declaration
+    - convention
+        - globals.mjs
+        - all exports as globals 
+        - default export as global with component name
     
-- introduce plugin/middleware for: Universe, Bootloader, Browserloader
+- introduce plugin/middleware for: Universe, Bootloader, Browserloader (Serviceworker)
 
 - @components
     - move work to evolux.dycomponents plugins
