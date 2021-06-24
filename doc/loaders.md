@@ -97,6 +97,10 @@ API:
 ## Firewall
 
 firewalling will be done in 'getSource'  
+
+restrict access to global variables and other available apis.
+- loaded code will be wrapped redefining all apis
+- check if JSON imports can override redefinitions
   
 
 ## Nodeloader
