@@ -6,6 +6,8 @@
 
 export *                                    from './common.mjs';
 
+import BaseDB                               from './lib/reliant/basedb.mjs';          // defines a global, must not be reexported
+
 // export *                                    from './lib/reliant/busy.mjs';       !fix
 export { default as unload }                from './lib/reliant/unload.mjs'
 
