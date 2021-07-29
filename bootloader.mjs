@@ -31,6 +31,7 @@ Object.defineProperties(thoregon, {
     'birth'      : { value: Date.now(), configurable: false, enumerable: true, writable: false },
     'since'      : { get: () => Date.now() - thoregon.birth, configurable: false, enumerable: true },
     'checkpoint' : { value: (msg) => console.log(msg, Date.now() - thoregon.birth), configurable: false, enumerable: true, writable: false },
+    'isDev'      : { value: false, configurable: false, enumerable: true, writable: false },
 });
 
 /*
