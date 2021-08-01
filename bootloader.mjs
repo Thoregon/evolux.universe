@@ -16,6 +16,9 @@ import crypto           from 'crypto';
 const baseURL           = new URL(`${process.cwd()}/`, 'file://');
 const bootloader        = new Bootloader();
 
+// check for the 'dev' switch now because this setting is immutable
+const isDev = process.argv.includes("-d");
+
 const thoregon = {};
 // *** some test methods
 Object.defineProperties(thoregon, {
@@ -31,7 +34,7 @@ Object.defineProperties(thoregon, {
     'birth'      : { value: Date.now(), configurable: false, enumerable: true, writable: false },
     'since'      : { get: () => Date.now() - thoregon.birth, configurable: false, enumerable: true },
     'checkpoint' : { value: (msg) => console.log(msg, Date.now() - thoregon.birth), configurable: false, enumerable: true, writable: false },
-    'isDev'      : { value: false, configurable: false, enumerable: true, writable: false },
+    'isDev'      : { value: isDev, configurable: false, enumerable: true, writable: false },
 });
 
 /*
