@@ -22,19 +22,21 @@ const isDev = process.argv.includes("-d");
 const thoregon = {};
 // *** some test methods
 Object.defineProperties(thoregon, {
-    'ui'         : { value: false, configurable: false, enumerable: true, writable: false },
-    'isBrowser'  : { value: false, configurable: false, enumerable: true, writable: false },
-    'isReliant'  : { value: false, configurable: false, enumerable: true, writable: false },
-    'isNode'     : { value: true, configurable: false, enumerable: true, writable: false },
-    'isSovereign': { value: true, configurable: false, enumerable: true, writable: false },
-    'bootloader' : { value: bootloader, configurable: false, enumerable: true, writable: false },
-    'nature'     : { value: 'sovereign', configurable: false, enumerable: true, writable: false },
-    'density'    : { value: 'headless', configurable: false, enumerable: true, writable: false }, // todo: add 'headed' for Electron and mobile apps
-    'addLoader'  : { value       : (name, loader, sig) => bootloader.addLoader(name, loader, sig), configurable: false, enumerable: true, writable: false },
-    'birth'      : { value: Date.now(), configurable: false, enumerable: true, writable: false },
-    'since'      : { get: () => Date.now() - thoregon.birth, configurable: false, enumerable: true },
-    'checkpoint' : { value: (msg) => console.log(msg, Date.now() - thoregon.birth), configurable: false, enumerable: true, writable: false },
-    'isDev'      : { value: isDev, configurable: false, enumerable: true, writable: false },
+    'ui'               : { value: false, configurable: false, enumerable: true, writable: false },
+    'isBrowser'        : { value: false, configurable: false, enumerable: true, writable: false },
+    'isReliant'        : { value: false, configurable: false, enumerable: true, writable: false },
+    'isNode'           : { value: true, configurable: false, enumerable: true, writable: false },
+    'isSovereign'      : { value: true, configurable: false, enumerable: true, writable: false },
+    'bootloader'       : { value: bootloader, configurable: false, enumerable: true, writable: false },
+    'nature'           : { value: 'sovereign', configurable: false, enumerable: true, writable: false },
+    'density'          : { value: 'headless', configurable: false, enumerable: true, writable: false }, // todo: add 'headed' for Electron and mobile apps
+    'addLoader'        : { value       : (name, loader, sig) => bootloader.addLoader(name, loader, sig), configurable: false, enumerable: true, writable: false },
+    'birth'            : { value: Date.now(), configurable: false, enumerable: true, writable: false },
+    'since'            : { get: () => Date.now() - thoregon.birth, configurable: false, enumerable: true },
+    'checkpoint'       : { value: (msg) => console.log(msg, Date.now() - thoregon.birth), configurable: false, enumerable: true, writable: false },
+    'isDev'            : { value: isDev, configurable: false, enumerable: true, writable: false },
+    'debug'            : { value: false, configurable: false, enumerable: true, writable: false },
+    'activateFirewalls': { value: async () => {} /*await protouniverse?.activateFirewalls()*/, configurable: false, enumerable : true, writable: false },
 });
 
 /*
