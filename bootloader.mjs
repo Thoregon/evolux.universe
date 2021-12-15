@@ -37,6 +37,7 @@ Object.defineProperties(thoregon, {
     'isDev'            : { value: isDev, configurable: false, enumerable: true, writable: false },
     'debug'            : { value: false, configurable: false, enumerable: true, writable: false },
     'activateFirewalls': { value: async () => {} /*await protouniverse?.activateFirewalls()*/, configurable: false, enumerable : true, writable: false },
+    'loader'           : { value: bootloader, configurable: false, enumerable: true, writable: false },
 });
 
 /*
@@ -46,7 +47,8 @@ const properties = {};
 
 if (!global.thoregon)   properties.thoregon   = { value: thoregon,  configurable: false, enumerable: true, writable: false };
 if (!global.globalThis) properties.globalThis = { value: global,    configurable: false, enumerable: true, writable: false };
-if (!global.crypto)     properties.crypto     = { value: { subtle: crypto.webcrypto.subtle, getRandomValues: crypto.webcrypto.getRandomValues }, configurable: false, enumerable: true, writable: false };
+if (!global.crypto)     properties.crypto     = { value: { subtle: crypto.webcrypto.subtle, getRandomValues: crypto.webcrypto.getRandomValues, CryptoKey: crypto.webcrypto.KeyObject }, configurable: false, enumerable: true, writable: false };
+if (!global.CryptoKey)  properties.CryptoKey  = { value: crypto.webcrypto.CryptoKey, configurable: false, enumerable: true, writable: false };
 
 if(typeof btoa === "undefined"){
     global.btoa = (data) => Buffer.from(data, "binary").toString("base64");
