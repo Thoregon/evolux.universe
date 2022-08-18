@@ -47,7 +47,7 @@ const properties = {};
 
 if (!global.thoregon)   properties.thoregon   = { value: thoregon,  configurable: false, enumerable: true, writable: false };
 if (!global.globalThis) properties.globalThis = { value: global,    configurable: false, enumerable: true, writable: false };
-if (!global.crypto)     properties.crypto     = { value: { subtle: crypto.webcrypto.subtle, getRandomValues: crypto.webcrypto.getRandomValues, CryptoKey: crypto.webcrypto.KeyObject }, configurable: false, enumerable: true, writable: false };
+if (!global.crypto)     properties.crypto     = { value: { subtle: crypto.webcrypto.subtle, getRandomValues: crypto.webcrypto.getRandomValues.bind(crypto.webcrypto), CryptoKey: crypto.webcrypto.KeyObject }, configurable: false, enumerable: true, writable: false };
 if (!global.CryptoKey)  properties.CryptoKey  = { value: crypto.webcrypto.CryptoKey, configurable: false, enumerable: true, writable: false };
 
 if(typeof btoa === "undefined"){
