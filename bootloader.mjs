@@ -11,13 +11,63 @@
 
 import Bootloader       from "./lib/loader/bootloader.mjs";
 import process          from "process";
-import crypto           from 'crypto';
+import crypto           from "crypto";
+import fs               from "fs";
 
 const baseURL           = new URL(`${process.cwd()}/`, 'file://');
 const bootloader        = new Bootloader();
 
 // check for the 'dev' switch now because this setting is immutable
 const isDev = process.argv.includes("-d");
+
+//
+// source
+//
+
+async function source(specifier/*, parentURL*/) {
+    const nextResolve = (specifier, context) => {
+        const url      = context.parentURL ? new URL(specifier, context.parentURL) : new URL(specifier, 'file:/'+process.cwd()+'/thoregon.mjs');
+        return {
+            url,
+            shortCircuit: true  // NodeJS 18.x
+        }
+    }
+
+    const nextLoad = (specifier, context) => {
+        try {
+            const fpath = specifier.substring(6);
+            const source = (fs.readFileSync(fpath)).toString('utf8');
+            return {
+                source,
+                shortCircuit: true  // NodeJS 18.x
+            };
+        } catch (ignore) {}
+    }
+
+    try {
+        if (!specifier) return;
+
+        if (specifier.startsWith('file:')) {
+            const loaded = nextLoad(specifier);
+            const source = loaded?.source;
+            return source;
+        }
+
+        const procContext = { parentURL: /*parentURL ??*/ 'file:/'+process.cwd()+'/thoregon.mjs' };
+
+        const resolved = await bootloader.resolve(specifier, procContext, nextResolve);
+        const url = resolved?.url;
+        if (!url) return;
+
+        const loaded = await bootloader.load(url, procContext, nextLoad);
+        const source = loaded?.source;
+        return source;
+    } catch (ignore) {
+        console.log("source error", ignore);
+    }
+}
+
+//-------------------------------------------------------------
 
 const thoregon = {};
 // *** some test methods
@@ -30,7 +80,7 @@ Object.defineProperties(thoregon, {
     'bootloader'       : { value: bootloader, configurable: false, enumerable: true, writable: false },
     'nature'           : { value: 'sovereign', configurable: false, enumerable: true, writable: false },
     'density'          : { value: 'headless', configurable: false, enumerable: true, writable: false }, // todo: add 'headed' for Electron and mobile apps
-    'addLoader'        : { value       : (name, loader, sig) => bootloader.addLoader(name, loader, sig), configurable: false, enumerable: true, writable: false },
+    'addLoader'        : { value: (name, loader, sig) => bootloader.addLoader(name, loader, sig), configurable: false, enumerable: false, writable: false },
     'birth'            : { value: Date.now(), configurable: false, enumerable: true, writable: false },
     'since'            : { get: () => Date.now() - thoregon.birth, configurable: false, enumerable: true },
     'checkpoint'       : { value: (msg) => console.log(msg, Date.now() - thoregon.birth), configurable: false, enumerable: true, writable: false },
@@ -38,6 +88,7 @@ Object.defineProperties(thoregon, {
     'debug'            : { value: false, configurable: false, enumerable: true, writable: false },
     'activateFirewalls': { value: async () => {} /*await protouniverse?.activateFirewalls()*/, configurable: false, enumerable : true, writable: false },
     'loader'           : { value: bootloader, configurable: false, enumerable: true, writable: false },
+    'source'           : { value: source, configurable: false, enumerable: false, writable: false },
 });
 
 /*
@@ -56,6 +107,20 @@ if(typeof btoa === "undefined"){
 }
 
 Object.defineProperties(global, properties);
+
+
+//
+// Polyfill essential behavior
+// todo [REFACTOR]: extract to vanillaT
+//
+
+if (!Object.prototype.$thoregonEntity) Object.defineProperty(Object.prototype, '$thoregonEntity', { configurable: false, enumerable: false, writable: false, value: undefined });
+if (!Function.prototype.metaClass) Object.defineProperty(Function.prototype, 'metaClass', { configurable: false, enumerable: false, writable: false, value: function ({ url } = {}, metaClass) { return this._metaclass } });
+if (!Function.prototype.checkIn) Object.defineProperty(Function.prototype, 'checkIn', { configurable: false, enumerable: false, writable: false, value: function ({ url } = {}, metaClass) { globalThis.dorifer?.checkinClass(url, this, metaClass) } });
+
+//
+// redirect loader functions
+//
 
 export async function resolve(specifier, context, defaultResolve) {
     return await bootloader.resolve(specifier, context, defaultResolve);
