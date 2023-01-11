@@ -13,9 +13,6 @@ ToDo
         - default export as global with component name
     
 - introduce plugin/middleware for: Universe, Bootloader, Browserloader (Serviceworker)
-
-- @components
-    - move work to evolux.dycomponents plugins
     
 - propagate universe property changes
     - check if DeferredProperties do the job
