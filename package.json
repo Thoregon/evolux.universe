@@ -24,11 +24,11 @@
     "@webcomponents/webcomponentsjs": "^2.2.10",
     "cors": "^2.8.5",
     "cuid": "^2.1.8",
+    "dotenv": "^16.3.1",
     "express": "^4.17.1",
     "greenlock-express": "^4.0.3",
     "node-localstorage": "^2.1.5",
     "stacktrace-js": "^2.0.0",
-    "yargs": "^11.0.0"
-  },
-  "devDependencies": {}
+    "yargs": "^17.7.2"
+  }
 }

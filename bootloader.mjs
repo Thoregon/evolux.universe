@@ -13,6 +13,8 @@ import Bootloader       from "./lib/loader/bootloader.mjs";
 import process          from "process";
 import crypto           from "crypto";
 import fs               from "fs";
+import dotenv           from "dotenv";
+dotenv.config();
 
 const baseURL           = new URL(`${process.cwd()}/`, 'file://');
 const bootloader        = new Bootloader();
