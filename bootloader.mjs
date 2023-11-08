@@ -26,6 +26,53 @@ const isDev = process.argv.includes("-d");
 // source
 //
 
+async function fileResolve(specifier) {
+    const nextResolve = (specifier, context) => {
+        const url      = context.parentURL ? new URL(specifier, context.parentURL) : new URL(specifier, 'file:/'+process.cwd()+'/thoregon.mjs');
+        return {
+            url,
+            shortCircuit: true  // NodeJS 18.x
+        }
+    }
+
+    const nextLoad = (specifier, context) => {
+        try {
+            const fpath = specifier.substring(6);
+            const source = (fs.readFileSync(fpath)).toString('utf8');
+            return {
+                source,
+                shortCircuit: true  // NodeJS 18.x
+            };
+        } catch (ignore) {}
+    }
+
+    try {
+        if (!specifier) return;
+
+        if (specifier.startsWith('file:')) {
+            const loaded = nextLoad(specifier);
+            const source = loaded?.source;
+            return source;
+        }
+
+        const procContext = { parentURL: /*parentURL ??*/ 'file:/'+process.cwd()+'/thoregon.mjs' };
+
+        const resolved = await bootloader.resolve(specifier, procContext, nextResolve);
+        const url = resolved?.url;
+        return url;
+    } catch (ignore) {
+        console.log("source error", ignore);
+    }
+}
+
+async function content(specifier) {
+    const url = await fileResolve(specifier);
+    if (!url) return;
+    const filename = url.substring(7);
+    const content = fs.readFileSync(filename);
+    return content;
+}
+
 async function source(specifier/*, parentURL*/) {
     const nextResolve = (specifier, context) => {
         const url      = context.parentURL ? new URL(specifier, context.parentURL) : new URL(specifier, 'file:/'+process.cwd()+'/thoregon.mjs');
@@ -91,6 +138,7 @@ Object.defineProperties(thoregon, {
     'activateFirewalls': { value: async () => {} /*await protouniverse?.activateFirewalls()*/, configurable: false, enumerable : true, writable: false },
     'loader'           : { value: bootloader, configurable: false, enumerable: true, writable: false },
     'source'           : { value: source, configurable: false, enumerable: false, writable: false },
+    'content'          : { value: content, configurable: false, enumerable: false, writable: false },
 });
 
 /*
