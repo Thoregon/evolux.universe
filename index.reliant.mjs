@@ -11,6 +11,8 @@ import BaseDB                               from './lib/reliant/basedb.mjs';    
 // export *                                    from './lib/reliant/busy.mjs';       !fix
 export { default as unload }                from './lib/reliant/unload.mjs'
 
+export * as dataurl                         from './lib/sovereign/dataurl.mjs';
+
 import letThereBeLight                      from './lib/reliant/letThereBeLight.mjs';
 export default letThereBeLight;
 

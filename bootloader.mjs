@@ -26,7 +26,7 @@ const isDev = process.argv.includes("-d");
 // source
 //
 
-async function fileResolve(specifier) {
+async function resolveLocation(specifier/*, parentURL*/) {
     const nextResolve = (specifier, context) => {
         const url      = context.parentURL ? new URL(specifier, context.parentURL) : new URL(specifier, 'file:/'+process.cwd()+'/thoregon.mjs');
         return {
@@ -59,14 +59,22 @@ async function fileResolve(specifier) {
 
         const resolved = await bootloader.resolve(specifier, procContext, nextResolve);
         const url = resolved?.url;
-        return url;
+
+        return typeof url === 'string' ? url : undefined;
+/*
+        if (!url) return;
+
+        const loaded = await bootloader.load(url, procContext, nextLoad);
+        const source = loaded?.source;
+        return source;
+*/
     } catch (ignore) {
         console.log("source error", ignore);
     }
 }
 
 async function content(specifier) {
-    const url = await fileResolve(specifier);
+    const url = await resolveLocation(specifier);
     if (!url) return;
     const filename = url.substring(7);
     const content = fs.readFileSync(filename);
@@ -139,6 +147,7 @@ Object.defineProperties(thoregon, {
     'loader'           : { value: bootloader, configurable: false, enumerable: true, writable: false },
     'source'           : { value: source, configurable: false, enumerable: false, writable: false },
     'content'          : { value: content, configurable: false, enumerable: false, writable: false },
+    'location'         : { value: resolveLocation, configurable: false, enumerable: false, writable: false },
 });
 
 /*

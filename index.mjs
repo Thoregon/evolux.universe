@@ -13,5 +13,7 @@ export *                                from './lib/sovereign/busy.mjs';
 // export { default as protouniverse }     from './lib/sovereign/protouniverse.mjs';
 export { default as unload }            from './lib/sovereign/unload.mjs'
 
+export * as dataurl                     from './lib/sovereign/dataurl.mjs';
+
 import letThereBeLight                  from './lib/sovereign/letThereBeLight.mjs';
 export default letThereBeLight;
