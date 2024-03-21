@@ -173,9 +173,9 @@ Object.defineProperties(global, properties);
 // todo [REFACTOR]: extract to vanillaT
 //
 
-if (!Object.prototype.$thoregonEntity) Object.defineProperty(Object.prototype, '$thoregonEntity', { configurable: false, enumerable: false, writable: false, value: undefined });
+if (!Object.prototype.hasOwnProperty('$thoregonEntity')) Object.defineProperty(Object.prototype, '$thoregonEntity', { configurable: false, enumerable: false, writable: false, value: undefined });
 // if (!Function.prototype.metaClass) Object.defineProperty(Function.prototype, 'metaClass', { configurable: false, enumerable: false, writable: false, value: function ({ url } = {}, metaClass) { return this._metaclass } });
-if (!Function.prototype.checkIn) Object.defineProperty(Function.prototype, 'checkIn', { configurable: false, enumerable: false, writable: false, value: function ({ url } = {}, metaClass) { globalThis.dorifer?.checkinClass(url, this, metaClass) } });
+if (!Function.prototype.hasOwnProperty('checkIn')) Object.defineProperty(Function.prototype, 'checkIn', { configurable: false, enumerable: false, writable: false, value: function ({ url } = {}, metaClass) { globalThis.dorifer?.checkinClass(url, this, metaClass) } });
 
 //
 // redirect loader functions
