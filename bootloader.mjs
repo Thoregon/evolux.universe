@@ -82,6 +82,7 @@ async function content(specifier) {
 }
 
 async function source(specifier/*, parentURL*/) {
+    specifier = decodeURIComponent(specifier);
     const nextResolve = (specifier, context) => {
         const url      = context.parentURL ? new URL(specifier, context.parentURL) : new URL(specifier, 'file:/'+process.cwd()+'/thoregon.mjs');
         return {
@@ -92,13 +93,17 @@ async function source(specifier/*, parentURL*/) {
 
     const nextLoad = (specifier, context) => {
         try {
-            const fpath = specifier.substring(6);
+            const i = specifier.indexOf('/C:');
+            const fpath = i > -1 ?  specifier.substring(i+1) : specifier.substring(6);
             const source = (fs.readFileSync(fpath)).toString('utf8');
             return {
                 source,
                 shortCircuit: true  // NodeJS 18.x
             };
-        } catch (ignore) {}
+        } catch (ignore) {
+            console.log(ignore);
+            debugger;
+        }
     }
 
     try {
@@ -110,6 +115,7 @@ async function source(specifier/*, parentURL*/) {
             return source;
         }
 
+        const parenturl = ('file:/'+process.cwd()+'/thoregon.mjs').replaceAll('\\', '/');
         const procContext = { parentURL: /*parentURL ??*/ 'file:/'+process.cwd()+'/thoregon.mjs' };
 
         const resolved = await bootloader.resolve(specifier, procContext, nextResolve);
