@@ -22,6 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "evolux.supervise": "file:../evolux.supervise",
-    "evolux.util": "file:../evolux.util"
+    "evolux.util": "file:../evolux.util",
+    "mime-types": "^3.0.1"
   }
 }
