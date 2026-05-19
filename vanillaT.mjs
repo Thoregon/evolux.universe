@@ -6,7 +6,7 @@
  * @see: {@link https://github.com/Thoregon}
  */
 
-import * as util from "/evolux.util";
+import * as util from "/evolux.util/index.mjs";
 
 //
 // globals available functions and entities
